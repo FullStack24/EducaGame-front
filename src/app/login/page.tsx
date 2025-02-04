@@ -1,7 +1,7 @@
 "use client"
 
 import Input from "@/globalComponents/input";
-import { Container, Form, Buttons } from "./components.styles";
+import { Container, Form, Buttons } from "./page.styles";
 import PageTitle from "@/globalComponents/page-title";
 import Button from "@/globalComponents/button";
 import LogoWithLabel from "@/globalComponents/logo-with-label";
@@ -11,6 +11,7 @@ import register from "@/services/register";
 import LabelLink from "@/globalComponents/label-link";
 import Select from "@/globalComponents/select";
 import { useRouter } from 'next/navigation';
+import { useAuth } from "@/contexts/auth";
 
 type page = 'login' | 'register'
 export default function Login() {
@@ -20,14 +21,15 @@ export default function Login() {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   const router = useRouter();
-
-
+  const auth = useAuth();
+  
   async function goToHome() {
     router.push('/');
   }
-  
+
   async function handleLogin(){
-    await login(email, password)
+    const response = await login(email, password)
+    auth.login(response)
     goToHome()
   }
   

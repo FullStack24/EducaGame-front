@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Baloo_Bhai_2 } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const font = Baloo_Bhai_2({
   weight: ["400", "500", "600", "700"],
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <body className={`${font.className}`}>
+      <Providers>
         {children}
+      </Providers>
       </body>
     </html>
   );

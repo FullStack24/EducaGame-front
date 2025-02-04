@@ -1,8 +1,7 @@
-"use client"
-export default function Home() {
+import Home from "./(home)/page";
+
+export default function Index() {
   return (
-    <div>
-    HOME
-    </div>
+    <Home/>
   );
 }
