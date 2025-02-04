@@ -1,8 +1,21 @@
 import { apiNoAuth } from './api-configuration';
 
-export default async function register(
-  ...args: [name: string, email: string, password: string, role: string]
-) {
-  return;
-  // return await apiNoAuth.post('/register', {...args})
+interface RegisterProps {
+  name: string;
+  email: string;
+  password: string;
+  role: 'admin' | 'user';
+}
+export default async function register({
+  name,
+  email,
+  password,
+  role,
+}: RegisterProps) {
+  return await apiNoAuth.post('/users/register-admin', {
+    name,
+    email,
+    password,
+    role,
+  });
 }

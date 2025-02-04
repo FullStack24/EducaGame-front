@@ -8,6 +8,7 @@ import { useAuth } from '@/contexts/auth';
 import Ranking from './ranking';
 import UsersStatus from './users-status';
 import Classes from './classes';
+import LogoutButton from './logout-button';
 
 export default function Home() {
   const user = useAuth().user;
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <Container>
+      <LogoutButton />
       <PageTitle label="Página Inicial" />
       <Welcome name={user?.name} />
       <ContentContainer>
