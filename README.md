@@ -1,7 +1,7 @@
 ### 1. Tela de Login (Comum a Todos)
 
-[x] - _Objetivo_: Autenticação do usuário.
-[x] - _Componentes_: Formulário de login, links para recuperação de senha e registro (caso aplicável).
+[ x ] - _Objetivo_: Autenticação do usuário.
+[ x ] - _Componentes_: Formulário de login, links para recuperação de senha e registro (caso aplicável).
 
 ### 2. Tela de Cadastro (opcional, para Alunos e Professores)
 
@@ -35,8 +35,8 @@ _Exibição_:
 
 ### 6. Tela de Criação de Quizzes (somente para Professores)
 
-[ ] - _Objetivo_: Criar novos quizzes.
-[ ] - _Componentes_: Formulário para título, descrição, perguntas e respostas.
+[x] - _Objetivo_: Criar novos quizzes.
+[x] - _Componentes_: Formulário para título, descrição, perguntas e respostas.
 [ ] - _Funcionalidades_:
 [ ] - Definir pontuação e recompensas para o quiz.
 [ ] - Associar o quiz a uma turma específica.
