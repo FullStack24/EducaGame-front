@@ -20,7 +20,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [role, setRole] = useState<'admin' | 'user'>('user');
+  const [role, setRole] = useState<'admin' | 'aluno' | 'professor'>('aluno');
   const router = useRouter();
   const auth = useAuth();
 
@@ -100,8 +100,8 @@ export default function Login() {
             <Select
               value={role}
               options={[
-                { value: 'admin', name: 'Professor' },
-                { value: 'user', name: 'Aluno' },
+                { value: 'professor', name: 'Professor' },
+                { value: 'aluno', name: 'Aluno' },
               ]}
               onChange={setRole}
             />

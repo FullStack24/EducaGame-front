@@ -13,9 +13,9 @@
 _Objetivo_: Resumo das atividades.
 _Componentes_: Widgets com informações relevantes.
 _Exibição_:
-[x] - _Professor_: Visão geral do sistema, estatísticas de usuários, turmas e quizzes.
-[x] - _Professor_: Desempenho das turmas, acesso rápido a quizzes e atividades.
-[x] - _Aluno_: Progresso em quizzes, rankings e atividades disponíveis.
+[-] - _Professor_: Visão geral do sistema, estatísticas de usuários, turmas e quizzes.
+[-] - _Professor_: Desempenho das turmas, acesso rápido a quizzes e atividades.
+[-] - _Aluno_: Progresso em quizzes, rankings e atividades disponíveis.
 
 ### 4. Tela de Gestão de Usuários (somente para Admin)
 

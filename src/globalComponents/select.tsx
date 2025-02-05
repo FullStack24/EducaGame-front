@@ -4,7 +4,7 @@ import styled from 'styled-components';
 interface SelectProps {
   options: { name: string; value: string }[];
   value: string;
-  onChange: (value: 'user' | 'admin') => void;
+  onChange: (value: 'aluno' | 'professor') => void;
 }
 
 const SelectContainer = styled.div`
@@ -41,7 +41,7 @@ const Select: React.FC<SelectProps> = ({ options, value, onChange }) => {
     <SelectContainer>
       <SelectElement
         value={value}
-        onChange={(e) => onChange(e.target.value as 'user' | 'admin')}
+        onChange={(e) => onChange(e.target.value as 'aluno' | 'professor')}
       >
         {options.map((option, index) => (
           <option key={index} value={option.value}>

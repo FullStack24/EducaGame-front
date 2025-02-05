@@ -1,4 +1,4 @@
-import { ContentBox } from './page.styles';
+import { ContentBox } from '../page.styles';
 
 export default function Ranking() {
   return (

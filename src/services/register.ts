@@ -4,7 +4,7 @@ interface RegisterProps {
   name: string;
   email: string;
   password: string;
-  role: 'admin' | 'user';
+  role: 'professor' | 'aluno' | 'admin';
 }
 export default async function register({
   name,
@@ -12,10 +12,19 @@ export default async function register({
   password,
   role,
 }: RegisterProps) {
-  return await apiNoAuth.post('/users/register-admin', {
-    name,
-    email,
-    password,
-    role,
-  });
+  if (role === 'admin' || role === 'professor') {
+    return await apiNoAuth.post('/users/register-admin', {
+      name,
+      email,
+      password,
+      role,
+    });
+  } else {
+    return await apiNoAuth.post('/users/create-aluno', {
+      name,
+      email,
+      password,
+      role,
+    });
+  }
 }

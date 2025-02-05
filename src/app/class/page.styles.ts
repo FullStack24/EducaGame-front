@@ -7,17 +7,7 @@ export const Container = styled.div`
   align-items: center;
   min-height: 100vh;
   padding-top: 20px;
-`;
-
-export const ContentContainer = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: 1200px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  gap: 30px;
 `;
 
 export const ContentBox = styled.div`
@@ -28,13 +18,5 @@ export const ContentBox = styled.div`
   max-width: 500px;
   padding: 20px;
   border-radius: 10px;
-`;
-
-export const SectionTitle = styled.h2`
-  display: flex;
-  justify-content: space-between;
-  background-color: ${Colors.red};
-  width: 100%;
-  padding: 5px;
-  text-align: center;
+  background-color: ${Colors.white};
 `;

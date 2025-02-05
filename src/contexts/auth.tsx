@@ -1,4 +1,5 @@
 import Login from '@/app/login/page';
+import LoadingComponent from '@/globalComponents/loading-component';
 import { useRouter } from 'next/navigation';
 import React, {
   createContext,
@@ -9,7 +10,7 @@ import React, {
   useEffect,
 } from 'react';
 
-type user = { name: string; email: string; role: string } | null;
+type user = { name: string; email: string; role: string; id: number } | null;
 interface AuthContextType {
   isAuthenticated: boolean;
   user: user;
@@ -22,12 +23,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<user>(null);
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (user) {
       setUser(JSON.parse(user));
     }
+    setLoading(false);
   }, []);
 
   const saveUserInfo = (user: user) => {
@@ -47,7 +50,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     <AuthContext.Provider
       value={{ user, isAuthenticated, saveUserInfo, logout }}
     >
-      {isAuthenticated ? <> {children}</> : <Login />}
+      {loading ? (
+        <LoadingComponent />
+      ) : isAuthenticated ? (
+        <> {children}</>
+      ) : (
+        <Login />
+      )}
     </AuthContext.Provider>
   );
 };
