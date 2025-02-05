@@ -39,11 +39,14 @@ export default function ClassPage() {
         Gerenciar {className} <GoBackButton goTo="/" />
       </SectionTitle>
       <ContentBox>
-        <Button
-          label="Adicionar Alunos"
-          type="red"
-          onClick={() => setShowAddStudentModal(true)}
-        />
+        {isAdmin && (
+          <Button
+            label="Adicionar Alunos"
+            type="red"
+            onClick={() => setShowAddStudentModal(true)}
+          />
+        )}
+        <SectionTitle>Participantes:</SectionTitle>
         <List>
           {studentsByClass?.map((student) => (
             <ClassListStudentItem student={student} />
@@ -59,6 +62,10 @@ export default function ClassPage() {
         />
       )}
       <Quizzes isAdmin={isAdmin} classId={classId} />
+
+      <ContentBox>
+        <SectionTitle>Ranking</SectionTitle>
+      </ContentBox>
     </Container>
   );
 }

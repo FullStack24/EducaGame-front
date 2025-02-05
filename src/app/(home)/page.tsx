@@ -19,10 +19,8 @@ export default function Home() {
       <LogoutButton />
       <Welcome name={user?.name} />
       <ContentContainer>
-        {isAdmin && <UsersStatus />}
-        {isAdmin && <Classes />}
-        <Exercises />
-        <Ranking />
+        <UsersStatus />
+        <Classes isAdmin={isAdmin} />
       </ContentContainer>
     </Container>
   );

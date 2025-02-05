@@ -9,11 +9,14 @@ import {
   Wrapper,
 } from './classes.styles';
 import Button from '@/globalComponents/button';
-import IClass from '../../interfaces/class.interface';
+import IClass from '../../(interfaces)/class.interface';
 import CreateClassModal from './create-class-modal';
 import { useRouter } from 'next/navigation';
 
-export default function Classes() {
+interface ClassesProps {
+  isAdmin: boolean;
+}
+export default function Classes({ isAdmin }: ClassesProps) {
   const [showModal, setShowModal] = useState(false);
   const [classes, setClasses] = useState<IClass[]>([]);
   const router = useRouter();
@@ -36,11 +39,13 @@ export default function Classes() {
       {showModal && <CreateClassModal onClose={() => setShowModal(false)} />}
       <SectionTitle>
         Turmas
-        <Button
-          label="Nova Turma"
-          onClick={() => setShowModal(true)}
-          type="gray"
-        />
+        {isAdmin && (
+          <Button
+            label="Nova Turma"
+            onClick={() => setShowModal(true)}
+            type="gray"
+          />
+        )}
       </SectionTitle>
       <Wrapper>
         {classes?.map((item) => (
