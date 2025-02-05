@@ -10,6 +10,8 @@ import ClassListStudentItem from './components/class-list-student-item';
 import { Container, ContentBox } from './page.styles';
 import { SectionTitle } from '../(home)/page.styles';
 import GoBackButton from '@/globalComponents/go-back-button';
+import Quizzes from './components/quizzes';
+import { useAuth } from '@/contexts/auth';
 
 export default function ClassPage() {
   const [showAddStudentModal, setShowAddStudentModal] = useState(false);
@@ -17,6 +19,8 @@ export default function ClassPage() {
   const searchParams = Object.fromEntries(useSearchParams().entries());
   const classId = parseInt(searchParams.id);
   const className = searchParams.name;
+  const user = useAuth().user;
+  const isAdmin = user?.role === 'professor' || user?.role === 'admin';
 
   async function handleFetchStudents() {
     const response = await fetchStudents(classId);
@@ -54,6 +58,7 @@ export default function ClassPage() {
           handleFetchStudents={handleFetchStudents}
         />
       )}
+      <Quizzes isAdmin={isAdmin} classId={classId} />
     </Container>
   );
 }

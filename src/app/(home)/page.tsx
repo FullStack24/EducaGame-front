@@ -1,6 +1,5 @@
 'use client';
 
-import PageTitle from '@/globalComponents/page-title';
 import { Container, ContentContainer } from './page.styles';
 import Exercises from './(components)/exercices';
 import Welcome from './(components)/welcome';
@@ -18,7 +17,6 @@ export default function Home() {
   return (
     <Container>
       <LogoutButton />
-      <PageTitle label="Página Inicial" />
       <Welcome name={user?.name} />
       <ContentContainer>
         {isAdmin && <UsersStatus />}
@@ -29,11 +27,3 @@ export default function Home() {
     </Container>
   );
 }
-
-// ### 3. Dashboard Principal
-// [ ] - *Objetivo*: Resumo das atividades.
-// [ ] - *Componentes*: Widgets com informações relevantes.
-// [ ] - *Exibição*:
-//   [ ] - *Admin*: Visão geral do sistema, estatísticas de usuários, turmas e quizzes.
-//   [ ] - *Professor*: Desempenho das turmas, acesso rápido a quizzes e atividades.
-//   [ ] - *Aluno*: Progresso em quizzes, rankings e atividades disponíveis.

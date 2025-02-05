@@ -27,11 +27,11 @@ _Exibição_:
 
 ### 5. Tela de Gestão de Turmas (somente para Professores)
 
-[ ] - _Objetivo_: Gerenciar turmas e alunos.
-[ ] - _Componentes_: Lista de turmas, formulários para adicionar/editar turmas e alunos.
-[ ] - _Funcionalidades_:
-[ ] - Adicionar/remover alunos de uma turma.
-[ ] - Visualizar detalhes da turma.
+[x] - _Objetivo_: Gerenciar turmas e alunos.
+[x] - _Componentes_: Lista de turmas, formulários para adicionar/editar turmas e alunos.
+[x] - _Funcionalidades_:
+[x] - Adicionar/remover alunos de uma turma.
+[x] - Visualizar detalhes da turma.
 
 ### 6. Tela de Criação de Quizzes (somente para Professores)
 

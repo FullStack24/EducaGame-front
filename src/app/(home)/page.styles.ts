@@ -15,9 +15,9 @@ export const ContentContainer = styled.div`
   max-width: 1200px;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
   gap: 20px;
+  margin: 30px 0;
 `;
 
 export const ContentBox = styled.div`
