@@ -1,3 +1,4 @@
+'use client';
 import { Form } from '@/app/login/page.styles';
 import Button from '@/globalComponents/button';
 import List from '@/globalComponents/list';
@@ -5,8 +6,14 @@ import Modal from '@/globalComponents/modal';
 import fetchAllUsers from '@/services/fetch-all-students';
 import { useEffect, useState } from 'react';
 import StudentItem from './student-item';
-import { SectionTitle } from '../../(home)/page.styles';
+import styled from 'styled-components';
+import Colors from '@/globalComponents/colors';
 
+const ModalTitle = styled.p`
+  font-size: 17px;
+  color: ${Colors.gray};
+  border-bottom: 1px solid gray;
+`;
 interface CreateClassModalProps {
   onClose: () => void;
   classId: number;
@@ -29,7 +36,6 @@ export default function AddStudentModal({
   const [allStudents, setAllStudents] = useState<Student[]>([]);
 
   async function listAllStudents() {
-    console.log('chamou');
     const users = await fetchAllUsers();
     if (!!users && users.length > 0) {
       setAllStudents(users);
@@ -47,7 +53,7 @@ export default function AddStudentModal({
   return (
     <Modal onClose={onClose}>
       <Form>
-        <SectionTitle>Adicionar aluno à Turma {classId}</SectionTitle>
+        <ModalTitle>Adicionar aluno à Turma {classId}</ModalTitle>
         <List>
           {filtered?.map((aluno) => (
             <StudentItem

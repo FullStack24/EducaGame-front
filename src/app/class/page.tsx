@@ -1,6 +1,6 @@
 'use client';
 import fetchStudents from '@/services/find-students';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import { Student } from './components/add-student-modal';
 import { Container } from './page.styles';
@@ -22,14 +22,13 @@ import {
 import { useAuth } from '@/contexts/auth';
 
 export default function ClassPage() {
-  const [showAddStudentModal, setShowAddStudentModal] = useState(false);
   const [studentsByClass, setStudentsByClass] = useState<Student[]>([]);
   const searchParams = Object.fromEntries(useSearchParams().entries());
   const classId = parseInt(searchParams.id);
   const className = searchParams.name;
   const user = useAuth().user;
   const isAdmin = user?.role === 'professor' || user?.role === 'admin';
-
+  const router = useRouter();
   const handleFetchStudents = useCallback(async () => {
     const response = await fetchStudents(classId);
     if (response) {
@@ -37,13 +36,13 @@ export default function ClassPage() {
     }
   }, [classId]);
 
+  function handleGoToAlunosPage() {
+    router.push(`/alunos?classId=${classId}&className=${className}`);
+  }
+
   useEffect(() => {
-    //remover...
-    if (false) {
-      setShowAddStudentModal(false);
-    }
     handleFetchStudents();
-  }, [showAddStudentModal, handleFetchStudents]);
+  }, [handleFetchStudents]);
 
   return (
     <Container>
@@ -62,22 +61,15 @@ export default function ClassPage() {
           </Points>
         </Right>
       </Section>
-      <AlunosInfo>
+      <AlunosInfo onClick={handleGoToAlunosPage}>
         <p>Alunos</p>
         <p>{studentsByClass?.length}</p>
       </AlunosInfo>
-      <VerTodosAlunos>
+      <VerTodosAlunos onClick={handleGoToAlunosPage}>
         <PlusIcon>+</PlusIcon>
         <p>Ver todos</p>
       </VerTodosAlunos>
-      {/* {showAddStudentModal && (
-        <AddStudentModal
-          studentsInClass={studentsByClass}
-          classId={classId}
-          onClose={() => setShowAddStudentModal(false)}
-          handleFetchStudents={handleFetchStudents}
-        />
-      )} */}
+
       <Quizzes isAdmin={isAdmin} classId={classId} />
     </Container>
   );

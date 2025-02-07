@@ -5,6 +5,7 @@ import CreateQuizModal from './create-quiz-modal';
 import styled from 'styled-components';
 import Colors from '@/globalComponents/colors';
 import { PlusIcon } from '../page.styles';
+import { useRouter } from 'next/navigation';
 
 const QuizContainer = styled.div`
   display: flex;
@@ -51,6 +52,10 @@ const QuizListItem = styled.li`
   height: 120px;
   padding: 10px;
   border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const QuizSectionTitle = styled.h2`
@@ -68,12 +73,18 @@ interface QuizzesProps {
 export default function Quizzes({ isAdmin, classId }: QuizzesProps) {
   const [quizzes, setQuizzes] = useState<Quiz[]>([]);
   const [showCreateQuizModal, setShowCreateQuizModal] = useState(false);
+  const router = useRouter();
+
   const getQuizzes = useCallback(async () => {
     const quizzes = await FetchQuizzesByClassId(classId);
     if (quizzes) {
       setQuizzes(quizzes);
     }
   }, [classId]);
+
+  function handleGoToQuiz(id: number) {
+    router.push(`/quiz?id=${id}`);
+  }
 
   useEffect(() => {
     getQuizzes();
@@ -84,7 +95,7 @@ export default function Quizzes({ isAdmin, classId }: QuizzesProps) {
       <QuizSectionTitle>Atividades disponíveis</QuizSectionTitle>
       <QuizList>
         {quizzes?.map((quiz) => (
-          <QuizListItem key={quiz.id}>
+          <QuizListItem onClick={() => handleGoToQuiz(quiz.id)} key={quiz.id}>
             <QuizTitle>{quiz.title}</QuizTitle>
             <QuizAskQuantity>{0} perguntas</QuizAskQuantity>
             {isAdmin && (
