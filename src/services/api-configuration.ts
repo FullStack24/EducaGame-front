@@ -22,14 +22,38 @@ api.interceptors.request.use(
   }
 );
 
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      removeTokenAndLogout();
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const apiNoAuth = axios.create({
   baseURL: baseURL,
 });
 
 function getToken() {
   try {
-    return localStorage.getItem('token') ?? '';
+    return typeof localStorage !== 'undefined'
+      ? localStorage.getItem('token') ?? ''
+      : '';
   } catch (error) {
+    console.log(error);
     return '';
+  }
+}
+
+function removeTokenAndLogout() {
+  if (typeof localStorage !== 'undefined') {
+    localStorage.clear();
+  }
+  if (window) {
+    window.location.href = '/login';
   }
 }

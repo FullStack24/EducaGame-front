@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import { ContentBox, SectionTitle } from '../page.styles';
 import findClasses from '@/services/buscar-turmas';
 import {
+  AddNewButton,
   Class,
   ClassName,
-  ProfessorName,
+  ClassTitle,
   StudentsLength,
+  ClassBox,
+  StudentsLenghtText,
   Wrapper,
 } from './classes.styles';
-import Button from '@/globalComponents/button';
 import IClass from '../../(interfaces)/class.interface';
 import CreateClassModal from './create-class-modal';
 import { useRouter } from 'next/navigation';
@@ -35,18 +36,17 @@ export default function Classes({ isAdmin }: ClassesProps) {
   }, [showModal]);
 
   return (
-    <ContentBox>
+    <ClassBox>
       {showModal && <CreateClassModal onClose={() => setShowModal(false)} />}
-      <SectionTitle>
-        Turmas
+      <ClassTitle>
+        Turmas:
         {isAdmin && (
-          <Button
-            label="Nova Turma"
-            onClick={() => setShowModal(true)}
-            type="gray"
-          />
+          <AddNewButton onClick={() => setShowModal(true)}>
+            <p>+</p> Nova turma
+          </AddNewButton>
         )}
-      </SectionTitle>
+      </ClassTitle>
+
       <Wrapper>
         {classes?.map((item) => (
           <Class
@@ -54,10 +54,13 @@ export default function Classes({ isAdmin }: ClassesProps) {
             key={item.id}
           >
             <ClassName>{item.name}</ClassName>
-            <StudentsLength>{item.alunos?.length} alunos</StudentsLength>
+            <StudentsLength>
+              <StudentsLenghtText>Alunos</StudentsLenghtText>
+              {item.alunos?.length}
+            </StudentsLength>
           </Class>
         ))}
       </Wrapper>
-    </ContentBox>
+    </ClassBox>
   );
 }

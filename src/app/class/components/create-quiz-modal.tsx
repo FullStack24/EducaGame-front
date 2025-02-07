@@ -52,7 +52,11 @@ export default function CreateQuizModal({
           value={description}
           type="text"
         />
-        <Button label="Criar Novo Quiz" type="red" onClick={handleCreateQuiz} />
+        <Button
+          label="Criar Novo Quiz"
+          type="green"
+          onClick={handleCreateQuiz}
+        />
       </Form>
     </Modal>
   );

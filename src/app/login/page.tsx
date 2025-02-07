@@ -46,7 +46,6 @@ export default function Login() {
   return (
     <Container>
       <LogoWithLabel />
-      {isLoginPage && <PageTitle label="Login" />}
       {isRegisterPage && <PageTitle label="Novo usuário" />}
       <Form>
         {isLoginPage && (
@@ -66,7 +65,7 @@ export default function Login() {
               placeholder="digite sua senha"
             />
             <Buttons>
-              <Button label="Entrar" type="red" onClick={handleLogin} />
+              <Button label="Entrar" type="green" onClick={handleLogin} />
             </Buttons>
             <LabelLink
               label="Não possui conta? Cadastre-se aqui."
@@ -106,7 +105,7 @@ export default function Login() {
               onChange={setRole}
             />
             <Buttons>
-              <Button label="Cadastrar" type="red" onClick={handleRegister} />
+              <Button label="Cadastrar" type="green" onClick={handleRegister} />
             </Buttons>
             <LabelLink
               label="Já possui conta? Faça login aqui."

@@ -1,4 +1,4 @@
-import { ContentBox } from '../page.styles';
+import { WelcomeText } from '../page.styles';
 
 interface WelcomeProps {
   name?: string;
@@ -6,8 +6,8 @@ interface WelcomeProps {
 export default function Welcome({ name }: WelcomeProps) {
   return (
     <>
-      {!!name && <h1>Bem vindo, {name}!</h1>}
-      {!name && <h1>Bem vindo!</h1>}
+      {!!name && <WelcomeText>Bem vindo, {name}!</WelcomeText>}
+      {!name && <WelcomeText>Bem vindo!</WelcomeText>}
     </>
   );
 }

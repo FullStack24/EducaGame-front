@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import Colors from './colors';
 
-const ButtonComponent = styled.button<{ type: 'red' | 'gray'; icon?: string }>`
+type colors = 'red' | 'gray' | 'blue' | 'green';
+const ButtonComponent = styled.button<{
+  type: colors;
+}>`
   padding: 5px 20px;
-  background-color: ${(props) =>
-    props.type === 'red' ? Colors.red : Colors.gray};
+  background-color: ${(props) => Colors[props.type]};
   border: 2px solid transparent;
   color: ${Colors.white};
   /* flex: 1; */
@@ -12,7 +14,11 @@ const ButtonComponent = styled.button<{ type: 'red' | 'gray'; icon?: string }>`
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  max-width: 200px;
   &:hover {
     background-color: ${Colors.white};
     border: 2px solid
@@ -23,8 +29,8 @@ const ButtonComponent = styled.button<{ type: 'red' | 'gray'; icon?: string }>`
 
 interface ButtonProps {
   label: string;
-  type: 'red' | 'gray';
-  icon?: string;
+  type: colors;
+  icon?: React.ReactNode;
   onClick: () => void;
 }
 export default function Button({ label, type, icon, onClick }: ButtonProps) {
@@ -34,7 +40,8 @@ export default function Button({ label, type, icon, onClick }: ButtonProps) {
   }
 
   return (
-    <ButtonComponent onClick={handleClick} type={type} icon={icon}>
+    <ButtonComponent onClick={handleClick} type={type}>
+      {icon}
       {label}
     </ButtonComponent>
   );

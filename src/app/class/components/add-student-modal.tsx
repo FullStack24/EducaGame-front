@@ -51,13 +51,14 @@ export default function AddStudentModal({
         <List>
           {filtered?.map((aluno) => (
             <StudentItem
+              key={aluno.id}
               handleFetchStudents={handleFetchStudents}
               classId={classId}
               student={aluno}
             />
           ))}
         </List>
-        <Button label="Fechar" type="red" onClick={onClose} />
+        <Button label="Fechar" type="green" onClick={onClose} />
       </Form>
     </Modal>
   );

@@ -32,7 +32,7 @@ export default function StudentItem({
       <label>{student.email}</label>
       <Button
         label="+"
-        type="red"
+        type="green"
         onClick={() => handleAddStudent(student?.id)}
       />
     </Item>

@@ -1,3 +1,18 @@
+# Como rodar?
+
+## rodar com o docker
+
+```
+docker build -t your-image-name .
+
+```
+
+## testar
+
+```
+http://localhost:3005
+```
+
 ### 1. Tela de Login (Comum a Todos)
 
 [ x ] - _Objetivo_: Autenticação do usuário.
