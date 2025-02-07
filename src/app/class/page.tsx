@@ -1,16 +1,24 @@
 'use client';
-import Button from '@/globalComponents/button';
-import fetchAllUsers from '@/services/fetch-all-students';
 import fetchStudents from '@/services/find-students';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import AddStudentModal, { Student } from './components/add-student-modal';
-import List from '@/globalComponents/list';
-import ClassListStudentItem from './components/class-list-student-item';
-import { Container, ContentBox } from './page.styles';
-import { SectionTitle } from '../(home)/page.styles';
-import GoBackButton from '@/globalComponents/go-back-button';
+import { Container } from './page.styles';
 import Quizzes from './components/quizzes';
+import {
+  Section,
+  Left,
+  Right,
+  ClassId,
+  Points,
+  PointsText,
+  PointNumber,
+  PointText,
+  GoldIcon,
+  AlunosInfo,
+  VerTodosAlunos,
+  PlusIcon,
+} from './page.styles';
 import { useAuth } from '@/contexts/auth';
 
 export default function ClassPage() {
@@ -35,37 +43,38 @@ export default function ClassPage() {
 
   return (
     <Container>
-      <SectionTitle>
-        Gerenciar {className} <GoBackButton goTo="/" />
-      </SectionTitle>
-      <ContentBox>
-        {isAdmin && (
-          <Button
-            label="Adicionar Alunos"
-            type="red"
-            onClick={() => setShowAddStudentModal(true)}
-          />
-        )}
-        <SectionTitle>Participantes:</SectionTitle>
-        <List>
-          {studentsByClass?.map((student) => (
-            <ClassListStudentItem student={student} />
-          ))}
-        </List>
-      </ContentBox>
-      {showAddStudentModal && (
+      <Section>
+        <Left>
+          <ClassId>{classId}</ClassId>
+        </Left>
+        <Right>
+          <p>{className}</p>
+          <Points>
+            <PointsText>
+              <PointNumber>850</PointNumber>
+              <PointText>Pontos</PointText>
+            </PointsText>
+            <GoldIcon src="./moeda.svg" alt="moedaIcon" />
+          </Points>
+        </Right>
+      </Section>
+      <AlunosInfo>
+        <p>Alunos</p>
+        <p>{studentsByClass?.length}</p>
+      </AlunosInfo>
+      <VerTodosAlunos>
+        <PlusIcon>+</PlusIcon>
+        <p>Ver todos</p>
+      </VerTodosAlunos>
+      {/* {showAddStudentModal && (
         <AddStudentModal
           studentsInClass={studentsByClass}
           classId={classId}
           onClose={() => setShowAddStudentModal(false)}
           handleFetchStudents={handleFetchStudents}
         />
-      )}
+      )} */}
       <Quizzes isAdmin={isAdmin} classId={classId} />
-
-      <ContentBox>
-        <SectionTitle>Ranking</SectionTitle>
-      </ContentBox>
     </Container>
   );
 }

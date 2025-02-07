@@ -22,6 +22,18 @@ api.interceptors.request.use(
   }
 );
 
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      removeTokenAndLogout();
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const apiNoAuth = axios.create({
   baseURL: baseURL,
 });
@@ -31,5 +43,12 @@ function getToken() {
     return localStorage.getItem('token') ?? '';
   } catch (error) {
     return '';
+  }
+}
+
+function removeTokenAndLogout() {
+  localStorage.clear();
+  if (window) {
+    window.location.href = '/login';
   }
 }

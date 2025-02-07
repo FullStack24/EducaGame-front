@@ -1,4 +1,5 @@
 import Colors from '@/globalComponents/colors';
+import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 interface QuizListItemProps {
@@ -24,9 +25,14 @@ export default function QuizListItem({
   id,
   category,
 }: QuizListItemProps) {
+  const router = useRouter();
+  function handleClickOnQuiz() {
+    router.push(`/quiz?id=${id}`);
+  }
+
   return (
-    <ListItem>
-      <p>Quiz nº {id}</p>
+    <ListItem onClick={handleClickOnQuiz}>
+      <p>Atividade nº {id}</p>
       <p>{title}</p>
       <p>{category}</p>
     </ListItem>
