@@ -80,40 +80,40 @@ EducaGame-front
 - Experiência responsiva e acessível.
 
 ## **Principais Módulos**
-1️⃣Autenticação (auth)**
-📌 Objetivo: Gerenciar o login e a autenticação de usuários.
-🔹 Firebase Authentication para autenticação.
-🔹 Controle de acesso para professores e alunos.
-🔹 Persistência do usuário autenticado no estado global.
+### **Autenticação (auth)**
+-📌 Objetivo: Gerenciar o login e a autenticação de usuários.
+-🔹 Firebase Authentication para autenticação.
+-🔹 Controle de acesso para professores e alunos.
+-🔹 Persistência do usuário autenticado no estado global.
 
-2️⃣ Gestão de Turmas (turmas)
-📌 Objetivo: Permitir que professores gerenciem suas turmas e alunos.
-🔹 Cadastro e organização de turmas.
-🔹 Associação de avaliações a turmas específicas.
+### **Gestão de Turmas (turmas)**
+-📌 Objetivo: Permitir que professores gerenciem suas turmas e alunos.
+-🔹 Cadastro e organização de turmas.
+-🔹 Associação de avaliações a turmas específicas.
 
-3️⃣ Rankings (ranking)
-📌 Objetivo: Exibir a classificação dos alunos e turmas.
-🔹 Opção para alternar entre ranking de alunos e turmas.
-🔹 Listagem dinâmica com os melhores desempenhos.
+### **Rankings (ranking)**
+-📌 Objetivo: Exibir a classificação dos alunos e turmas.
+-🔹 Opção para alternar entre ranking de alunos e turmas.
+-🔹 Listagem dinâmica com os melhores desempenhos.
 
-4️⃣ Gamificação (gamification)
-📌 Objetivo: Tornar a experiência de aprendizado mais envolvente.
-🔹 Pontuação e níveis para os alunos.
-🔹 Feedback visual para progresso e conquistas.
-🔹 Integração com quizzes e atividades.
-🔹 Configuração de regras de gamificação pelos professores.
+### **Gamificação (gamification)**
+-📌 Objetivo: Tornar a experiência de aprendizado mais envolvente.
+-🔹 Pontuação e níveis para os alunos.
+-🔹 Feedback visual para progresso e conquistas.
+-🔹 Integração com quizzes e atividades.
+-🔹 Configuração de regras de gamificação pelos professores.
 
-5️⃣ Quizzes e Atividades (quizzes)
-📌 Objetivo: Exibir e gerenciar as atividades dos alunos.
-🔹 Interface para responder quizzes e exercícios.
-🔹 Correção automática e exibição de feedback.
-🔹 Registro de desempenho para gamificação.
+### **Quizzes e Atividades (quizzes)**
+-📌 Objetivo: Exibir e gerenciar as atividades dos alunos.
+-🔹 Interface para responder quizzes e exercícios.
+-🔹 Correção automática e exibição de feedback.
+-🔹 Registro de desempenho para gamificação.
 
-6️⃣ Notificações (notifications)
-📌 Objetivo: Alertar os usuários sobre eventos importantes.
-🔹 Feedback instantâneo para alunos ao final das avaliações.
-🔹 Exibição de alertas sobre novas atividades e eventos.
-🔹 Configuração de notificações personalizadas.
+### **Notificações (notifications)**
+-📌 Objetivo: Alertar os usuários sobre eventos importantes.
+-🔹 Feedback instantâneo para alunos ao final das avaliações.
+-🔹 Exibição de alertas sobre novas atividades e eventos.
+-🔹 Configuração de notificações personalizadas.
 
 ## **Configuração do projeto**
 ### **Pré-Requisitos**
