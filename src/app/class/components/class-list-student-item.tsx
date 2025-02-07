@@ -5,7 +5,7 @@ import Colors from '@/globalComponents/colors';
 const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  color: ${Colors.black};
+  color: ${Colors.white};
   border-bottom: 1px solid ${Colors.gray};
   margin: 10px 0;
 `;

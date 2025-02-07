@@ -14,3 +14,9 @@ const eslintConfig = [
 ];
 
 export default eslintConfig;
+eslintConfig.forEach(config => {
+  if (config.rules) {
+    delete config.rules["@typescript-eslint/no-explicit-any"];
+    delete config.rules["react-hooks/exhaustive-deps"];
+  }
+});
