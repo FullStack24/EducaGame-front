@@ -1,9 +1,10 @@
-import { ContentBox } from '../page.styles';
+import CardButton from '@/globalComponents/card-button';
+import { useRouter } from 'next/navigation';
 
 export default function UsersStatus() {
-  return (
-    <ContentBox>
-      <h2>Pessoal</h2>
-    </ContentBox>
-  );
+  const router = useRouter();
+  function handleClick() {
+    router.push('/perfil');
+  }
+  return <CardButton icon="/perfil.svg" label="Perfil" onCLick={handleClick} />;
 }

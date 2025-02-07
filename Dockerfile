@@ -1,34 +1,34 @@
-# Usa uma imagem oficial do Node.js para o build
-FROM node:20-alpine AS builder
+# Etapa 1: Build do Next.js
+FROM node:18-alpine AS builder
 
+# Definir diretório de trabalho
 WORKDIR /app
 
-# Copia apenas os arquivos essenciais para instalar dependências
-COPY package.json package-lock.json ./
+# Copiar package.json e package-lock.json
+COPY package*.json ./
 
-# Instala as dependências
-RUN npm install
+# Instalar dependências (ignora devDependencies se NODE_ENV=production)
+RUN npm install --legacy-peer-deps
 
-# Copia o restante do código
+# Copiar todo o código do projeto
 COPY . .
 
-# Build do Next.js
+# Construir a aplicação Next.js
 RUN npm run build
 
-# -----------------------------------
-# Segunda etapa: otimizar para produção
-FROM node:20-alpine AS runner
+# Etapa 2: Rodar o Next.js em produção
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Copia apenas os arquivos necessários para rodar o app
-COPY --from=builder /app/package.json /app/package-lock.json ./
+# Copiar apenas os arquivos necessários da etapa de build
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
 
-# Expor a porta da aplicação
-EXPOSE 3000
+# Expor porta do Next.js
+EXPOSE 3005
 
-# Iniciar a aplicação Next.js
-CMD ["npm", "run", "start"]
+# Comando para iniciar o servidor Next.js
+CMD ["npm", "start"]

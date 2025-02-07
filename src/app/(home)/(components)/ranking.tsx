@@ -1,9 +1,14 @@
-import { ContentBox } from '../page.styles';
+'use client';
+
+import CardButton from '@/globalComponents/card-button';
+import { useRouter } from 'next/navigation';
 
 export default function Ranking() {
+  const router = useRouter();
+  function handleClick() {
+    router.push('/perfil');
+  }
   return (
-    <ContentBox>
-      <h2>Ranking</h2>
-    </ContentBox>
+    <CardButton icon="/ranking.svg" label="Ranking" onCLick={handleClick} />
   );
 }

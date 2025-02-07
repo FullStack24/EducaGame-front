@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  padding: 0 30px;
   padding-top: 20px;
 `;
 
@@ -37,4 +38,18 @@ export const SectionTitle = styled.h2`
   width: 100%;
   padding: 5px;
   text-align: center;
+`;
+
+export const TopCards = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+`;
+
+export const WelcomeText = styled.p`
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 20px;
 `;

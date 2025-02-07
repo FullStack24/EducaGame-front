@@ -1,8 +1,8 @@
 'use client';
 import fetchStudents from '@/services/find-students';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import AddStudentModal, { Student } from './components/add-student-modal';
+import { useEffect, useState, useCallback } from 'react';
+import { Student } from './components/add-student-modal';
 import { Container } from './page.styles';
 import Quizzes from './components/quizzes';
 import {
@@ -30,16 +30,20 @@ export default function ClassPage() {
   const user = useAuth().user;
   const isAdmin = user?.role === 'professor' || user?.role === 'admin';
 
-  async function handleFetchStudents() {
+  const handleFetchStudents = useCallback(async () => {
     const response = await fetchStudents(classId);
     if (response) {
       setStudentsByClass(response);
     }
-  }
+  }, [classId]);
 
   useEffect(() => {
+    //remover...
+    if (false) {
+      setShowAddStudentModal(false);
+    }
     handleFetchStudents();
-  }, [showAddStudentModal]);
+  }, [showAddStudentModal, handleFetchStudents]);
 
   return (
     <Container>

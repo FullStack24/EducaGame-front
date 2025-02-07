@@ -40,14 +40,19 @@ export const apiNoAuth = axios.create({
 
 function getToken() {
   try {
-    return localStorage.getItem('token') ?? '';
+    return typeof localStorage !== 'undefined'
+      ? localStorage.getItem('token') ?? ''
+      : '';
   } catch (error) {
+    console.log(error);
     return '';
   }
 }
 
 function removeTokenAndLogout() {
-  localStorage.clear();
+  if (typeof localStorage !== 'undefined') {
+    localStorage.clear();
+  }
   if (window) {
     window.location.href = '/login';
   }

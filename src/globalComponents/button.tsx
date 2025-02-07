@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Colors from './colors';
 
+type colors = 'red' | 'gray' | 'blue' | 'green';
 const ButtonComponent = styled.button<{
-  type: 'red' | 'gray' | 'blue';
+  type: colors;
 }>`
   padding: 5px 20px;
   background-color: ${(props) => Colors[props.type]};
@@ -28,7 +29,7 @@ const ButtonComponent = styled.button<{
 
 interface ButtonProps {
   label: string;
-  type: 'red' | 'gray' | 'blue';
+  type: colors;
   icon?: React.ReactNode;
   onClick: () => void;
 }

@@ -1,13 +1,11 @@
 'use client';
 
-import { Container, ContentContainer } from './page.styles';
-import Exercises from './(components)/exercices';
+import { Container, TopCards } from './page.styles';
 import Welcome from './(components)/welcome';
 import { useAuth } from '@/contexts/auth';
-import Ranking from './(components)/ranking';
 import UsersStatus from './(components)/users-status';
 import Classes from './(components)/classes';
-import LogoutButton from './(components)/logout-button';
+import Ranking from './(components)/ranking';
 
 export default function Home() {
   const user = useAuth().user;
@@ -16,12 +14,13 @@ export default function Home() {
 
   return (
     <Container>
-      <LogoutButton />
       <Welcome name={user?.name} />
-      <ContentContainer>
+      <TopCards>
         <UsersStatus />
-        <Classes isAdmin={isAdmin} />
-      </ContentContainer>
+        <Ranking />
+      </TopCards>
+      <Classes isAdmin={isAdmin} />
+      {/* <LogoutButton /> */}
     </Container>
   );
 }

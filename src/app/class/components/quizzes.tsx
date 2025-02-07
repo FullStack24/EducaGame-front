@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import FetchQuizzesByClassId from '@/services/fetch-quizzes-by-class-id';
-import List from '@/globalComponents/list';
 import Button from '@/globalComponents/button';
 import CreateQuizModal from './create-quiz-modal';
 import styled from 'styled-components';
@@ -69,23 +68,23 @@ interface QuizzesProps {
 export default function Quizzes({ isAdmin, classId }: QuizzesProps) {
   const [quizzes, setQuizzes] = useState<Quiz[]>([]);
   const [showCreateQuizModal, setShowCreateQuizModal] = useState(false);
-  async function getQuizzes() {
+  const getQuizzes = useCallback(async () => {
     const quizzes = await FetchQuizzesByClassId(classId);
     if (quizzes) {
       setQuizzes(quizzes);
     }
-  }
+  }, [classId]);
 
   useEffect(() => {
     getQuizzes();
-  }, [showCreateQuizModal]);
+  }, [showCreateQuizModal, getQuizzes]);
 
   return (
     <QuizContainer>
       <QuizSectionTitle>Atividades disponíveis</QuizSectionTitle>
       <QuizList>
         {quizzes?.map((quiz) => (
-          <QuizListItem>
+          <QuizListItem key={quiz.id}>
             <QuizTitle>{quiz.title}</QuizTitle>
             <QuizAskQuantity>{0} perguntas</QuizAskQuantity>
             {isAdmin && (

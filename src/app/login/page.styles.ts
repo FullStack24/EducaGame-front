@@ -18,10 +18,10 @@ export const Container = styled.div`
   min-height: 100vh;
   padding-bottom: 50%;
 `;
-export const Buttons = styled.div`
+export const Buttons = styled.div<{ align?: string }>`
   display: flex;
   gap: 10px;
   width: 100%;
-  justify-content: center;
+  justify-content: ${(props) => (props.align ? props.align : 'center')};
   margin-top: 10px;
 `;

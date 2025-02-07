@@ -15,8 +15,8 @@ export default function CreateClassModal({ onClose }: CreateClassModalProps) {
   const user = useAuth().user;
 
   async function handleCreateClass() {
-    if (!name) return;
-    await createClass({ name: name, professorId: user?.id! });
+    if (!name || !user?.id) return;
+    await createClass({ name: name, professorId: user.id });
     onClose();
   }
   return (
@@ -29,7 +29,7 @@ export default function CreateClassModal({ onClose }: CreateClassModalProps) {
           value={name}
           type="text"
         />
-        <Button label="Criar turma" type="red" onClick={handleCreateClass} />
+        <Button label="Criar turma" type="green" onClick={handleCreateClass} />
       </Form>
     </Modal>
   );
