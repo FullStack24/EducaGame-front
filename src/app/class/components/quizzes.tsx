@@ -7,23 +7,28 @@ import Colors from '@/globalComponents/colors';
 import { PlusIcon } from '../page.styles';
 import { useRouter } from 'next/navigation';
 
-const QuizContainer = styled.div`
+export const QuizContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   color: ${Colors.gray};
+  margin-bottom: 80px;
 `;
-
-const QuizTitle = styled.h2`
+export const QuizTitle = styled.h2`
   font-size: 18px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 15px;
 `;
-const QuizAskQuantity = styled.p`
+export const QuizAskQuantity = styled.p`
   font-size: 13px;
 `;
 
-const QuizButtonContainer = styled.div`
+export const QuizButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,24 +37,31 @@ const QuizButtonContainer = styled.div`
   margin: 10px 0;
   gap: 5px;
 `;
-const EditIcon = styled.img`
+export const EditIcon = styled.img`
   width: 15px;
 `;
-const QuizList = styled.ul`
+export const QuizList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   gap: 16px;
   margin-bottom: 20px;
 `;
-const QuizListItem = styled.li`
-  background-color: ${Colors.white};
+export const QuizListItem = styled.li<{ rightAnswers?: number }>`
+  background-color: ${({ rightAnswers }) =>
+    rightAnswers
+      ? rightAnswers >= 5
+        ? Colors.green
+        : Colors.red
+      : Colors.green};
   min-width: 155px;
-  /* flex: 1; */
+  color: white;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: space-evenly;
-  height: 120px;
+  justify-content: space-between;
+  height: 130px;
   padding: 10px;
   border-radius: 8px;
 
@@ -58,8 +70,10 @@ const QuizListItem = styled.li`
   }
 `;
 
-const QuizSectionTitle = styled.h2`
+export const QuizSectionTitle = styled.h2`
   font-size: 15px;
+  align-self: flex-start;
+  color: ${Colors.gray};
 `;
 interface Quiz {
   id: number;
