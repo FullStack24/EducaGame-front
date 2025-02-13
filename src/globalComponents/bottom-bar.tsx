@@ -25,13 +25,12 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  max-width: 400px;
+  max-width: 600px;
   bottom: 0;
   height: 80px;
-  background-color: ${Colors.black};
-  border-top: 1px solid gray;
   position: fixed;
   padding: 30px 30px 45px;
+  background-color: #000;
 
   @media (min-width: 900px) {
     display: none;

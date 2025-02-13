@@ -36,6 +36,7 @@ export const QuizButtonContainer = styled.div`
   border-top: 1px solid gray;
   margin: 10px 0;
   gap: 5px;
+  background-collor: #000;
 `;
 export const EditIcon = styled.img`
   width: 15px;

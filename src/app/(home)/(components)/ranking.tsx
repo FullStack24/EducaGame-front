@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function Ranking() {
   const router = useRouter();
   function handleClick() {
-    router.push('/perfil');
+    router.push('/ranking');
   }
   return (
     <CardButton icon="/ranking.svg" label="Ranking" onCLick={handleClick} />

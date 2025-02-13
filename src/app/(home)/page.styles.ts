@@ -8,6 +8,7 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: 0 30px;
   padding-top: 20px;
+  color: #fff;
 `;
 
 export const ContentContainer = styled.div`

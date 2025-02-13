@@ -17,6 +17,7 @@ export const Container = styled.div`
   justify-content: center;
   min-height: 100vh;
   padding-bottom: 50%;
+  color: #fff;
 `;
 export const Buttons = styled.div<{ align?: string }>`
   display: flex;

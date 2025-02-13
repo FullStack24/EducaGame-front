@@ -70,7 +70,7 @@ export default function ClassPage() {
         />
       )}
       <EditButton onClick={() => setShowModal(true)}>
-        <Image alt="editar" src="/editar.svg" />
+        <Image alt="editar" src="/editar.svg" width={20} height={20} />
         <p>Editar</p>
       </EditButton>
       <Section>
@@ -116,7 +116,7 @@ export default function ClassPage() {
               {!isAdmin && <div>{i + 4}/10</div>}
               {isAdmin && (
                 <QuizButtonContainer>
-                  <EditIcon src="/editar.svg" />
+                  <EditIcon src="/editar.svg" width={20} height={20} />
                   Editar atividade
                 </QuizButtonContainer>
               )}

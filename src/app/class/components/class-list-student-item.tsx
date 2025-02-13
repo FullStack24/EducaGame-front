@@ -14,6 +14,12 @@ interface StudentItemProps {
   student: Student;
 }
 export default function ClassListStudentItem({ student }: StudentItemProps) {
+  console.log("Recebendo student:", student);
+
+  if (!student) {
+    return <p>Erro: aluno não encontrado!</p>;
+  }
+
   return (
     <Item>
       <label>{student.name}</label>
@@ -21,3 +27,4 @@ export default function ClassListStudentItem({ student }: StudentItemProps) {
     </Item>
   );
 }
+

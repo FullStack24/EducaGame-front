@@ -14,6 +14,7 @@ export const Names = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  color: #fff;
 `;
 
 export const EditButton = styled.div`
@@ -26,6 +27,7 @@ export const EditButton = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
+  color: #fff;
 
   cursor: pointer;
   transition: background-color 0.3s ease;

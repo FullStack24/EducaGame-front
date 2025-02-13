@@ -7,6 +7,7 @@ const Container = styled.div`
   justify-content: center;
   height: 50px;
   align-items: center;
+  background-color: #010101;
 `;
 const Logo = styled.img`
   width: 30px;
