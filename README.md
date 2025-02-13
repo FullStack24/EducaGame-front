@@ -1,4 +1,7 @@
-# **EducaGame — Back-End**
+# **EducaGame — FRONT**
+
+## **PITCH E RODANDO PROJETO**
+https://youtu.be/Sp5VYNp_K98
 
 ## **Descrição**
 O **EducaGame** é uma plataforma gamificada desenvolvida para auxiliar professores(as) da rede pública no gerenciamento de turmas, avaliações e desempenho dos alunos. Além disso, a plataforma utiliza elementos de gamificação para aumentar o engajamento e a motivação dos estudantes.
